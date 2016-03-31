@@ -22,7 +22,7 @@ width:150px;
     color: black;
 }
 .x{
-	padding: 25px 30px !important;
+	padding: 25px 30px!important;
 }
 
 
@@ -311,7 +311,7 @@ display:inline !important;
 }
 .ggy
 {
-  padding: 16px
+  padding: 16px;
 }
 .yoyo
 {
@@ -334,11 +334,11 @@ display:inline !important;
 }
 .uit
 {
-  border-radius:0px !important;
-  padding: 12px! important;
-  font-size: 15px !important;
-  border-color: none !important;
-      background-color:white !important;
+  border-radius:0px!important;
+  padding: 12px!important;
+  font-size: 15px!important;
+  border-color: none!important;
+      background-color:white!important;
 }
 .uit:hover{
   background-color: white !important;
@@ -356,11 +356,11 @@ display:inline !important;
 .wer
 {
  background-color:  #659fcb !important;
-     padding: 10px 11px !important;
+     padding: 10px 11px!important;
 }
 .were{
   background-color: #d14836 !important;
-      padding: 10px 8px !important;
+      padding: 10px 8px!important;
 
 }
 .rto
@@ -402,7 +402,7 @@ display:inline !important;
 }
 .ret
 {
-  padding: :5px!important;
+  padding:5px!important;
 }
 .wqt
 {
@@ -656,7 +656,7 @@ text-align: center;
 }
 .row7{
   text-align: center;
-  padding: 20px
+  padding: 20px;
 }
 
 
