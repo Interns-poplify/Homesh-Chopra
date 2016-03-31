@@ -1,0 +1,184 @@
+<!--<div class="container">
+<div class="ll row gh">
+<div class="col-md-6 gg">
+<%= image_tag @article.attachments.first.image.url(:preview), :alt => 'product_image',:class=>'fk img-thumbnail'%>
+</div>
+<div class="col-md-6 gg">
+
+<h1><%= @article.title %></h1>
+<p>Author:-<%=link_to @article.user.name,profile_path(@article.user.id) %></p>
+<p>
+  <% @article.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag),:class=>'opw',:style=>'text-decoration:none;padding:5px' %>
+  <% end %>
+</p>
+
+<p><%= @article.created_at.strftime("%m/%d/%Y")%></p>
+<p><%=image_tag @article.user.avatar.url(:thumb),:class=>"img-rounded"%></p>
+
+
+</div>
+</div>
+<br>
+<div class="ll">
+<div class="ppp">
+<p class="kll"><%= raw(@article.description) %></p>
+<div class="row">
+<% @article.attachments.each do |picture| %> 
+<div class="col-md-6">
+<%= image_tag picture.image.url(:preview),:class=>'kol img-thumbnail'%>
+</div>
+<%end%><br>
+</div>
+  <%if user_signed_in? && current_user.id==@article.user_id%>
+  <br>
+  <div class="hhh">
+<%= link_to 'Edit', edit_article_path(@article) ,:class=>'btn btn-primary'%>
+<%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>'btn btn-danger'%><br>
+<%end%>
+</div>
+<h3>Comments(<%= @article.comments.size %>)</h3>
+<%= render partial: 'articles/comment', collection: @article.comments %>
+<% if user_signed_in?%>
+<%= render partial: 'comments/form' %>
+<%end%>
+</div>
+<%= link_to "Back to Articles List", articles_path %>
+</div>
+</div>
+-->
+<div class="container">
+
+<div class="row yt">
+
+<div class="col-md-7 ggy">
+<%= image_tag @article.attachments.first.image.url(:preview), :alt => 'product_image',:class=>'fk img-responsive'%>
+</div>
+
+<div class="col-md-5">
+<h3 class="yu"><%= @article.title %></h3><br>
+<p class="yoyo">By <%=link_to @article.user.name,profile_path(@article.user.id)%>|<%= @article.created_at.strftime("%A,%d %b %Y %l:%M %p")%></p>
+
+ <p class='ytu'><% @article.tags.each do |tag| %>
+   <p class="pyu"> <%=tag.name%></p>
+  <% end %>
+  </p>
+  Total Views
+  <div class="row tyu">
+  <button class='btn btn-lg uit 'style="cursor:default">Share It On:</button>
+  <button class="btn btn-default btn-lg qwe uio">
+  <i class="fa fa-facebook"></i>
+  </button>
+
+  <button class="btn btn-default btn-lg qwe wer">
+  <i class="fa fa-twitter"></i>
+  </button>
+
+  <button class="btn btn-default btn-lg qwe were">
+  <i class="fa fa-google-plus"></i>
+  </button>
+  
+
+  </div>
+</div>
+
+</div> 
+<br>
+<br>
+<div class="row">
+<div class="col-md-8 padding-left-0 padding-right-0">
+<div class="col-md-12 rto">
+<p class="kll"><%= raw(@article.description) %></p>
+<div class="row yrte">
+<%if @article.attachments.second.present? %>
+<%=image_tag @article.attachments.second.image.url(:preview),:class=>'img-responsive yrt'%>
+<%end%>
+<%if user_signed_in? && current_user.id==@article.user_id%>
+  <br>
+<%= link_to 'Edit', edit_article_path(@article) ,:class=>' border-radius btn btn-primary'%>
+<%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>' border-radius btn btn-danger'%><br>
+<%end%>
+</div>
+</div>
+</div>
+
+<div class=" col-xs-12 col-md-4 padding-right-0 padding-left-0">
+<div class="col-md-10  col-md-offset-2 trend-padding">
+<div class="trend">
+Trending Post
+</div>
+<%a=@article.id%>
+<%@article.user.articles.limit(4).each do |at|%>
+<%if a!=at.id%>
+<div class="uytr wtes row">
+<div class="col-md-5 erty">
+<%=image_tag at.attachments.first.image.url(:recent),:class=>'img-responsive'%>
+</div>
+<div class="col-md-7 erty">
+<%=link_to at.title,article_path(at.id)%>
+</div>
+</div>
+<hr class="wqt">
+<%end%>
+<%end%>
+<br>
+<div class="related">
+Related Post
+</div>
+<%@article.tags.limit(1).each do |ta|%>
+<%ta.articles.limit(3).each do |taa|%>
+<div class="uytr wtes row">
+<div class="col-md-5 erty">
+<%=image_tag taa.attachments.first.image.url(:recent),:class=>'img-responsive'%>
+</div>
+<div class="col-md-7 erty">
+<%=link_to taa.title,article_path(taa.id)%>
+</div>
+</div>
+<hr class="wqt">
+<%end%>
+<%end%>
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+<br>
+<div class="row">
+<div class="col-md-8 padding-comment">
+<div class="comment-head ">
+<h4 class="comment-margin">COMMENTS(<%= @article.comments.size %>)</h4>
+</div>
+
+<div class="comment-form">
+<%if !user_signed_in?%>
+<%= link_to "Sign In To Comment", "#login", "data-toggle" => "modal",:class => 'btn  ytp signin-comment' %>
+
+<%end%>
+<% if user_signed_in?%>
+<%= render partial: 'comments/form' %>
+<%end%>
+<div id="commentf">
+<%= render partial: 'articles/comment', collection: @article.comments.order(:created_at).reverse_order %>
+</div>
+</div>
+
+</div>
+</div>
+<br>
+<br>
+<br>
+</div>
+<script> 
+$(document).ready(function(){
+    $(".comment-head").click(function(){
+        $(".comment-form").slideToggle("slow");
+    });
+});
+</script>

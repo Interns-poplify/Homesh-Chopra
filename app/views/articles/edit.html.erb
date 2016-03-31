@@ -1,0 +1,14 @@
+
+<div class="row">
+<div class="container create-article">
+<h1>Editing Article</h1>
+<% @article.attachments.each do |picture| %> 
+<!--<%= image_tag picture.image.url(:medium)%>
+<%= link_to 'Destroy', article_path(@article,picture ),
+            data: {:confirm => 'Are you sure?'}, :method => :delete %>
+<%end%><br>-->
+<%= render 'form' %>
+<%= link_to 'Back', articles_path,:class=>'btn btn-danger bbb'%>
+
+</div>
+</div>

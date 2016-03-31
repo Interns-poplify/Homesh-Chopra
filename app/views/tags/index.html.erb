@@ -1,0 +1,12 @@
+<h1>TAGS</h1>
+<table>
+<%@tags.each_with_index do |tag,i|%>
+<tr>
+<td><%=i+1%></td>
+<td><%=link_to tag.name,tag_path(tag.id)%></td>
+<!--<td><%= link_to 'Destroy',tag, method: :delete, data: { confirm: 'Are you sure?' } %><br></td>
+--><%end%>
+</tr>
+</table>
+<br>
+<%= link_to "Create a New Article", new_article_path() %>

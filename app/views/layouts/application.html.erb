@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+
+<%= favicon_link_tag '/assets/favicon.ico' %>
+  <title>BLOGGER</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all','data-turbolinks-track'=>true %>
+  <%= javascript_include_tag 'application','data-turbolinks-track'=>true%>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  
+</div>
+
+  <%= render "devise/sessions/new" %>
+  <%= render "devise/registrations/new" %>
+  <body class="body">
+  <div class="se-pre-con"></div>
+<%= render "devise/shared/flash_messages", flash: flash %> 
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid dd">
+  <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+          <a href="<%=articles_path%>"><img id="img1" alt="logo" src="/assets/logo.png" class="img-responsive"></a>
+    </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <%if user_signed_in?%> 
+          <li><%= link_to "Create a New Article", new_article_path(),:class=>"btn q"%></li>
+          <%else%>
+
+         <li><%= link_to 'Create a New Article', "#login", data: {toggle: "modal", target: "#login"}, class: 'btn q' %></li>
+         <%end%>
+          <%else%>
+          <% if user_signed_in? %>
+          <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete ,:class=>'btn q glyphicon glyphicon-off'%></li>
+          <li><%= link_to current_user.email, profile_path(current_user.id),:class=>'btn q glyphicon glyphicon-user'%></li>
+          <% else %>
+            <li><%= link_to "Sign In", "#login", "data-toggle" => "modal",:class => 'btn q' %></li>
+            <li><%= link_to "Sign Up","#signup" , "data-toggle" => "modal", :class => 'btn q'  %></li>
+            <% end %>  
+          </ul>
+        </div>
+  </div>
+</nav>
+<%= yield %>
+<div class=" row row5">
+<div class="text-center">
+<h3 style="margin-top: 0px">SIGN UP TO OUR NEWSLETTER</h3>
+<h5>GET IDEAS, INSPIRATION & COMPETITION PRIZES DIRECTLY TO YOUR INBOX</h5>
+<div class=" col-md-offset-3 col-md-4">
+<input class="form-control jjwq" placeholder="E-Mail"></input>
+</div>
+<div class="col-md-2">
+<button class="lop">SUBSCRIBE</button>
+</div>
+</div>
+</div>
+<div class="row row6">
+<a href="#">
+<i class="fa fa-facebook fa-2x face"></i>
+</a>
+&nbsp;
+<a href="#">
+<i class="fa fa-twitter fa-2x twit"></i>
+</a>
+
+&nbsp;
+<a href="#">
+<i class="fa fa-google-plus fa-2x google"></i>
+</a>
+
+</div>
+<div class="row7">
+Copyright@All Rights Reserved
+</div>
+</div>
+</body>
+
+
+
+</html>
+<script type="text/javascript">
+
+
+  $(window).load(function() {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut(2000);;
+  });
+</script>

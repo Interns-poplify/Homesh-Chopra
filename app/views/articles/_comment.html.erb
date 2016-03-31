@@ -1,0 +1,25 @@
+<div class="comment-border">
+<div class="commenter row">
+<div class="col-md-1">
+<%=image_tag comment.user.avatar.url(:small),:class=>'img-circle'%>
+</div>
+<div class="juju col-md-3">
+<%=link_to comment.user.name,profile_path(comment.user.id)  %><br>
+<%="#{time_ago_in_words(comment.created_at)} ago "%>
+</div>
+  </div>
+  <hr class='hr-margin'>
+  <div class="comment-material">
+  <p class="comment"><%= comment.body%></p>
+  
+  <%if user_signed_in? && current_user.id==comment.user_id%>
+  <hr>
+  <%= link_to 'Edit', edit_article_comment_path(:article_id=>comment.article.id,:id=>comment.id),:remote=>true %>|
+  <%= link_to 'Destroy', article_comment_path(:article_id=>comment.article.id,:id=>comment.id),
+            data: {:confirm => 'Are you sure?'}, :method => :delete ,:remote=> true%>
+  <%end%>
+
+  </div>
+</div>
+<br>
+

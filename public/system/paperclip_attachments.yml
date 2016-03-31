@@ -1,0 +1,12 @@
+---
+:User:
+  :avatar:
+  - :medium
+  - :thumb
+:Attachment:
+  :image:
+  - :large
+  - :medium
+  - :preview
+  - :small
+  - :thumb

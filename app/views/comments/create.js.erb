@@ -1,0 +1,3 @@
+
+$("#commentf").html("<%= escape_javascript(render(:partial => '/articles/comment', collection: @article.comments.order(:created_at).reverse_order)) %>");
+$('#comment_body').val(' ');
